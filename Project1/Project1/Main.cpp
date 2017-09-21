@@ -3,6 +3,7 @@
 
 #include<iostream>
 #include<time.h>
+#include<math.h>
 
 void DisplayIntro();
 void DisplayTarget();
@@ -169,4 +170,18 @@ void launchMissile()
 	missile.blastCoords.x = missile.angVerticle * 166.6;
 	missile.blastCoords.y = missile.angHorizontal * 0.02 * missile.blastCoords.x;
 
+	std::cout << "Your missile has hit x:" << missile.blastCoords.x << " y:" << missile.blastCoords.y << std::endl;
+	int x = (missile.blastCoords.x - target.coords.x) * (missile.blastCoords.x - target.coords.x) + (missile.blastCoords.y - target.coords.y) * (missile.blastCoords.y - target.coords.y);
+	int distance = sqrt(x);
+
+	std::cout << "The missile landed " << distance << "m from your targer" << std::endl;
+
+	if (distance <= 50)
+	{
+		std::cout << "Congratulations you've successfully destroyed your target" << std::endl;
+	}
+	else
+	{
+		std::cout << "You have missed your target" << std::endl;
+	}
 }
